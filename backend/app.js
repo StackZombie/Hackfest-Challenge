@@ -9,7 +9,6 @@ const messageRoute = require("./routes/MessageRoute");
 // console.log("redis client",redisClient);
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
 app.use("/user",userRoute);
 app.use("/channel",channelRoute);
 app.use("/message",messageRoute);

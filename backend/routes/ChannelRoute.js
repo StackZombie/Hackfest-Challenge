@@ -28,7 +28,6 @@ route.get("/list",async(req,res)=>{
     }
 })
 
-
 // join the channel which will return a message id for user
 route.get("/join/:username/:channelName",async(req,res)=>{
     try{

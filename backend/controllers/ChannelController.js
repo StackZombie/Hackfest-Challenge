@@ -1,3 +1,4 @@
+//get all channels
 const list = async()=>{
     try{
         await console.log("finding list");

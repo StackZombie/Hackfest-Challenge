@@ -30,7 +30,6 @@ router.get("/search/:username/:city",async(req,res)=>{
         res.json(err);
     }
 })
-
 // get details of a single user
 router.get("/details/:username",async(req,res)=>{
     try{

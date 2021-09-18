@@ -1,4 +1,4 @@
-
+//
 // send message for first time
 const sendFirstTime = async(message)=>{
     try{

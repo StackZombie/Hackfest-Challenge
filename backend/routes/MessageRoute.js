@@ -16,7 +16,6 @@ route.post("/send",async(req,res)=>{
         res.json(err);
     }
 })
-
 // get limited messages for the specific channel 
 router.get("/limited/:limit/:channelName",async(req,res)=>{
     try{
