@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.use("/user",userRoute);
-app.use("/channel",channelRoute);s
+app.use("/channel",channelRoute);
 
 
 app.listen(PORT , ()=>{
