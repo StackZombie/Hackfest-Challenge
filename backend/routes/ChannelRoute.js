@@ -1,5 +1,5 @@
 const route = require("express").Router();
-const {list} = require("../controllers/")
+const {list} = require("../controllers/ChannelController")
 
 route.get("/save",(req,res)=>{
     res.json({
