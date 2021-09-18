@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const {register,search,findMe} = require("../controllers/UserController.js");
 
-
+// register a user 
 router.post("/save",async(req,res)=>{
     const {username,firstname,lastname,city,country} = req.body;
     console.log("Hello world");
@@ -19,6 +19,7 @@ router.post("/save",async(req,res)=>{
     }
 })
 
+// get a user by username and city
 router.get("/search/:username/:city",async(req,res)=>{
     try{
         const username = req.params.username;
@@ -29,7 +30,7 @@ router.get("/search/:username/:city",async(req,res)=>{
         res.json(err);
     }
 })
-
+// get details of a single user
 router.get("/details/:username",async(req,res)=>{
     try{
         const username = req.params.username;

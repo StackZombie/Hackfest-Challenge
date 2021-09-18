@@ -1,3 +1,4 @@
+//get all channels
 const list = async()=>{
     try{
         await console.log("finding list");
@@ -43,4 +44,40 @@ const create = async(channelName)=>{
         }
 }
 
-module.exports = {list,create};
+const joinChannel = async(channelName, userName)=>{
+    try{
+        await console.log("Channel ",channelName,userName);
+        return({
+            message:"Channel Joined Successfully",
+            data : "[message-id]",
+            status:true,
+            code:200
+        })
+    }catch(err){
+        return({
+            status:false,
+            message:"Something went wrong",
+            code : 400
+        })
+    }
+}
+
+const leaveChannel = async(channelName,userName)=>{
+    try{
+        await console.log("Channel ",channelName,userName);
+        return({
+            message:"Channel Left Successfully",
+            data : "[message-id]",
+            status:true,
+            code:200
+        })
+    }catch(err){
+        return({
+            status:false,
+            message:"Something went wrong",
+            code : 400
+        })
+    }
+}
+
+module.exports = {list,create,joinChannel,leaveChannel};

@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  redis:
+    container_name: redis
+    image: "redislabs/redismod"
+    ports:
+      - 6379:6379
+    volumes:
+      - ./backend/redisdata:/data
+    entrypoint:
+      redis-server
+        --loadmodule /usr/lib/redis/modules/redisearch.so
+        --appendonly yes
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  backend:
+    build: ./backend
+    container_name: backend
+    command: sh ./docker-entrypoint.sh
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+    environment: 
+      REDIS_PORT: $REDIS_PORT
+      REDIS_PASSWORD: $REDIS_PASSWORD
+      REDIS_HOST: $REDIS_HOST
