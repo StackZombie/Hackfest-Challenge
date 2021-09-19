@@ -1,12 +1,30 @@
 //
+// const redisClient = require("../dbconnection/RedisConnection");\
+
+const redisClient = require("../dbconnection/RedisConnection");
+
+
+
 const register =async(user)=>{
     try{
         await console.log("Save User",user);
+        const exist = await redisClient.sismember("usernames",usern.username);
+        if(1/* exist is true */){
+        // const result = await redisClient.sadd('usernames', user.username);
+        // await redisClient.hset('user' + ':'+user.username,usern.uername);
         return({
             status:true,
             message:"User Registered Successfully",
-            data : "key:user"
-        })
+            data : "key:user",
+            code:200
+        })}else{
+            return({
+                status:false,
+                message:"User Already Exist",
+                data : null,
+                code:400
+            }) 
+        }
     }catch(err){
         return({
             status:false,
@@ -19,7 +37,8 @@ const register =async(user)=>{
 const search = async({username,city})=>{
     try{    
         await console.log("Search ",username,city);
-        if(1){
+        //const user = await redisClient.hmget('user:'+username, 'firstname', 'city');
+        if(1 /*user exist*/){
             return({
                 status:true,
                 message:"User Found Successfully",
@@ -45,20 +64,29 @@ const findMe = async(username)=>{
     try{
         //redis find function will come here
         await console.log(uername);
-        if(1){
-            return({
-                status:true,
-                code:200,
-                data:"{user}",
-                message:"details found"
-            })
-        }else{
-            return({
-                status:false,
-                code:404,
-                message:"details not found",
-            })
-        }
+    
+        // const userInfo = await redisClient.hgetall("user:"+username);
+        // if(userInfo){
+        //     return({
+        //         status:true,
+        //         code:200,
+        //         data:userInfo,
+        //         message:"details found"
+        //     })
+        // }else{
+        //     return({
+        //         status:false,
+        //         data:null,
+        //         code:404,
+        //         message:"details not found",
+        //     })
+        // }
+        return({
+            status:200,
+            code:200,
+            message:"user found",
+            data:"{userInfo}"
+        })
     }catch(err){
         return({
             status:false,

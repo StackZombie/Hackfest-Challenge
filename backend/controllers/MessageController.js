@@ -1,4 +1,7 @@
 //
+
+//const redisClient = require("../dbconnection/RedisConnection");
+
 // send message for first time
 const sendFirstTime = async(message)=>{
     try{
@@ -6,6 +9,9 @@ const sendFirstTime = async(message)=>{
         //once get the message id
         // call sendMessage function with newly generated message and than return 
         // result object will return
+        // const messageId = redisClient.xadd("channel:"+message.channelName+"* type message");
+        // message.messageId = messageId;
+        // const response = await sendMessage(message);
         return({
             status:200,
             message:"Message Sent Successfully",
@@ -25,6 +31,8 @@ const sendFirstTime = async(message)=>{
 const sendMessage = async(message)=>{
     try{
         await console.log("We will write redis function to send message",message);
+      //  const result = await redisClient.hset(`message:${message.messageId} channel ${message.channelName} username ${message.userName} message ${message.text}`);
+        
         return({
             status:200,
             message:"Message Sent Successfully",
@@ -65,10 +73,11 @@ const getLimitedMessage = async(limit,channelName)=>{
     try{
         await console.log("We will get all the message id for the specific channel",channelName,limit);
         //once the array of id return we will get all messages for those id and return response
+       // const result = await redisClient.xrevrange(`channel:${channelName} + - count ${limit}`)
         return({
             status:200,
             message:"Messages for the following channel",
-            data : "[An array of object of mesages]",
+            data : "result",
             success:true
         })
     }catch(err){
